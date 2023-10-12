@@ -180,7 +180,8 @@ class PermutationExplainer(Explainer):
             "main_effects": main_effect_values,
             "clustering": row_clustering,
             "error_std": None if row_values_history is None else row_values_history.std(0),
-            "output_names": self.model.output_names if hasattr(self.model, "output_names") else None
+            "output_names": self.model.output_names if hasattr(self.model, "output_names") else None,
+            "row_values": row_values
         }
 
 
