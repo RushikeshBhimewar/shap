@@ -113,6 +113,8 @@ class PermutationExplainer(Explainer):
         row_values_history = None
         history_pos = 0
         main_effect_values = None
+        row_values_rushi = []
+
         if len(inds) > 0:
             for _ in range(npermutations):
 
@@ -157,6 +159,8 @@ class PermutationExplainer(Explainer):
                     i += 1
                 history_pos += 1
 
+                row_values_rushi.append(np.array(row_values))
+
             if npermutations == 0:
                 raise ValueError(f"max_evals={max_evals} is too low for the Permutation explainer, it must be at least 2 * num_features + 1 = {2 * len(inds) + 1}!")
 
@@ -181,7 +185,8 @@ class PermutationExplainer(Explainer):
             "clustering": row_clustering,
             "error_std": None if row_values_history is None else row_values_history.std(0),
             "output_names": self.model.output_names if hasattr(self.model, "output_names") else None,
-            "row_values": row_values
+            "row_values": row_values,
+            "row_values_rushi" : row_values_rushi
         }
 
 

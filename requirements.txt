@@ -1,4 +1,4 @@
-# Requirements for running notebooks
+pip# Requirements for running notebooks
 -e .
 
 # For running tests
